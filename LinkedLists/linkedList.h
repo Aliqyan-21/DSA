@@ -3,15 +3,13 @@
 
 #include <iostream>
 
-template <typename T>
-class NodeType {
+template <typename T> class NodeType {
 public:
   T info;
   NodeType<T> *link;
 };
 
-template <typename T>
-class LinkedListIterator {
+template <typename T> class LinkedListIterator {
 private:
   NodeType<T> *current;
 
@@ -24,12 +22,15 @@ public:
     current = current->link;
     return *this;
   }
-  bool operator==(const LinkedListIterator<T> &right) const { return current == right.current; }
-  bool operator!=(const LinkedListIterator<T> &right) const { return current != right.current; }
+  bool operator==(const LinkedListIterator<T> &right) const {
+    return current == right.current;
+  }
+  bool operator!=(const LinkedListIterator<T> &right) const {
+    return current != right.current;
+  }
 };
 
-template <typename T>
-class LinkedListType {
+template <typename T> class LinkedListType {
 protected:
   int count;
   NodeType<T> *first;
@@ -67,9 +68,18 @@ private:
     }
   }
 
+  // reverse print function from recursion
+  void reversePrint(NodeType<T> *current) const {
+    if (current != nullptr) {
+      reversePrint(current->link);
+      std::cout << current->info << std::endl;
+    }
+  }
+
 public:
   LinkedListType() : first(nullptr), last(nullptr), count(0) {}
-  LinkedListType(const LinkedListType<T> &otherList) : first(nullptr), last(nullptr), count(0) {
+  LinkedListType(const LinkedListType<T> &otherList)
+      : first(nullptr), last(nullptr), count(0) {
     copyList(otherList);
   }
   ~LinkedListType() { destroyList(); }
@@ -116,6 +126,8 @@ public:
     }
     return last->info;
   }
+
+  void printListReverse() const { reversePrint(first); }
 
   virtual bool search(const T &searchItem) const = 0;
   virtual void insertFirst(const T &newItem) = 0;
