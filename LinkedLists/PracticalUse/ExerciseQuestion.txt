@@ -1,0 +1,58 @@
+Programming Example : VIDEO STORE
+
+During holidays or on weekends, a family or an individual typically rents a movie either
+from a local store or online. 
+
+Therefore, we write a program that does the following:
+1. Rent a video; that is, check out a video.
+2. Return, or check in, a video.
+3. Create a list of videos owned by the store.
+4. Show the details of a particular video.
+5. Print a list of all the videos in the store.
+6. Check whether a particular video is in the store.
+7. Maintain a customer database.
+8. Print a list of all the videos rented by each customer.
+
+Let us write a program for the video store. This example further illustrates the object-
+oriented design methodology and, in particular, inheritance and overloading.
+
+The programming requirement tells us that the video store has two major compo-
+nents: videos and customers. We will describe these two components in detail. We
+also need to maintain various lists:
+• A list of all the videos in the store
+• A list of all the store’s customers
+• Lists of the videos currently rented by each customer
+
+We will develop the program in two parts. In part 1, we design, implement, and test
+the video component. In part 2, we design and implement the customer component,
+which is then added to the video component developed in part 1. That is, after
+completing parts 1 and 2, we can perform all the operations listed previously.
+
+- First Stage
+Here we discuss the video component. The common
+things associated with a video are as follows:
+• Name of the movie
+• Names of the stars
+• Name of the producer
+• Name of the director
+• Name of the production company
+• Number of copies in the store
+
+From this list, we see that some of the operations to be performed on the video object
+are as follows:
+1. Set the video information—that is, the title, stars, production
+company, and so on.
+2. Show the details of a particular video.
+3. Check the number of copies in the store.
+4. Check out (that is, rent) the video. In other words, if the number of
+copies is greater than zero, decrement the number of copies by one.
+5. Check in (that is, return) the video. To check in a video, first we
+must check whether the store owns such a video and, if it does,
+increment the number of copies by one.
+6. Check whether a particular video is available—that is, check whether
+the number of copies currently in the store is greater than zero.
+
+The deletion of a video from the video list requires that the video list be searched
+for the video to be deleted. Thus, we need to check the title of a video to find
+out which video is to be deleted from the list. For simplicity, we assume that two
+videos are the same if they have the same title.
