@@ -3,8 +3,7 @@
 
 #include "linkedList.h"
 
-template <typename T>
-class OrderedLinkedList : public LinkedListType<T> {
+template <typename T> class OrderedLinkedList : public LinkedListType<T> {
 public:
   bool search(const T &searchItem) const override {
     bool found = false;
