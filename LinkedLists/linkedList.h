@@ -136,6 +136,8 @@ public:
 
   LinkedListIterator<T> begin() const { return LinkedListIterator<T>(first); }
   LinkedListIterator<T> end() const { return LinkedListIterator<T>(nullptr); }
+
+  NodeType<T> *firstNode() { return first; }
 };
 
 #endif // LINKEDLIST_H
