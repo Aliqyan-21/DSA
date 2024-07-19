@@ -2,13 +2,14 @@
 #define QUEUETYPE_H
 
 #include "../queue.h"
+#include <cassert>
 #include <iostream>
 
 template <typename T> class QueueType : public QueueADT<T> {
 public:
   // overload assignment operator for copying the queue
   const QueueType<T> &operator=(const QueueType<T> &otherQueue) {
-    if (this != otherQueue) // avoid self copy
+    if (this != &otherQueue) // avoid self copy
       copyQueue(otherQueue);
     return *this;
   }
@@ -80,16 +81,17 @@ private:
 
   T *list;
 
-  QueueType<T> copyQueue(const QueueType<T> &otherQueue) {
+  void copyQueue(const QueueType<T> &otherQueue) {
     delete[] list;
 
     maxQueueSize = otherQueue.maxQueueSize;
     queueFront = otherQueue.queueFront;
     queueBack = otherQueue.queueBack;
+    count = otherQueue.count;
 
     list = new T[maxQueueSize];
 
-    for (int i = 0; i < maxQueueSize; i++) {
+    for (int i = 0; i < count; i++) {
       list[i] = otherQueue.list[i];
     }
   }
